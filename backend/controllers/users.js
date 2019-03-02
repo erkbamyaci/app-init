@@ -96,7 +96,7 @@ module.exports = {
       const payload = req.decoded;
       // TODO: Log the payload here to verify that it's the same payload
       //  we used when created the token
-      if (payload && payload.user === "admin") {
+      if (payload) {
         try {
           const users = await User.find({});
           result.status = status;
