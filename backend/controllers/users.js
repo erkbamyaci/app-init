@@ -13,9 +13,9 @@ module.exports = {
       let result = {};
       let status = 201;
 
-      const { name, password } = req.body;
+      const { email, password } = req.body;
       const user = new User();
-      user.name = name;
+      user.email = email;
       user.password = password;
 
       try {
@@ -37,7 +37,7 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    const { name, password } = req.body;
+    const { email, password } = req.body;
 
     try {
       await mongoose.connect(connUri, { useNewUrlParser: true });
@@ -45,14 +45,14 @@ module.exports = {
       let status = 200;
 
       try {
-        const user = await User.findOne({ name })
+        const user = await User.findOne({ email })
         // We could compare passwords in our model instead of below
         try {
           const match = await bycrpt.compare(password, user.password)
           if (match) {
             status = 200;
             // Create a token
-            const payload = { user: user.name };
+            const payload = { user: user.email };
             const options = { expiresIn: "2d", issuer: "barfly" }
             const secret = process.env.JWT_SECRET;
             const token = jwt.sign(payload, secret, options);
@@ -96,7 +96,7 @@ module.exports = {
       const payload = req.decoded;
       // TODO: Log the payload here to verify that it's the same payload
       //  we used when created the token
-      if (payload && payload.user === "Admin") {
+      if (payload && payload.user === "admin") {
         try {
           const users = await User.find({});
           result.status = status;

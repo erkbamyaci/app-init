@@ -8,7 +8,7 @@ const stage = require("../config")[environment];
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: {
+  email: {
     type: "String",
     required: true,
     trim: true,
@@ -29,7 +29,7 @@ userSchema.pre("save", function (next) {
   } else {
     bycrypt.hash(user.password, stage.saltingRounds, function (err, hash) {
       if (err) {
-        console.log("Error hashing password for user", user.name);
+        console.log("Error hashing password for user", user.email);
         next(err);
       } else {
         user.password = hash;

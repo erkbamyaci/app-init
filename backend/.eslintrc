@@ -1,0 +1,224 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "mocha": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "ava"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "16.6"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      // https://www.npmjs.com/package/airbnb-prop-types
+      "exact",
+      // https://www.npmjs.com/package/prop-types-exact
+      "Object.freeze"
+      // https://tc39.github.io/ecma262/#sec-object.freeze
+    ]
+  },
+  "globals": {
+    "mechanic": true,
+    "yarify": true,
+    "L": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "rules": {
+    "import/no-cycle": "off",
+    "prefer-destructuring": "off",
+    "no-console": "off",
+    "dot-notation": "off",
+    "quote-props": "off",
+    "comma-dangle": "off",
+    "padded-blocks": "off",
+    "no-trailing-spaces": "off",
+    "no-else-return": "off",
+    "max-len": [
+      "warn",
+      200
+    ],
+    "no-template-curly-in-string": "error",
+    "no-loop-func": "error",
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxEOF": 2
+      }
+    ],
+    "semi": "error",
+    "no-var": "error",
+    // disallow unnecessary semicolons
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
+    "curly": "error",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "handle-callback-err": [
+      "error",
+      "^(err|error|errors)$"
+    ],
+    "eqeqeq": "error",
+    "no-underscore-dangle": "off",
+    "no-multi-spaces": "error",
+    "space-unary-ops": [
+      "error",
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ],
+    "object-curly-spacing": [
+      "warn",
+      "never"
+    ],
+    "object-curly-newline": "off",
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "template-curly-spacing": "off",
+    "guard-for-in": "error",
+    "no-return-assign": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "comma-spacing": [
+      1,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "allow": [
+          "resolve",
+          "reject",
+          "error",
+          "err"
+        ]
+      }
+    ],
+    "no-unused-vars": "warn",
+    "no-use-before-define": [
+      "error",
+      "nofunc"
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "no-confusing-arrow": [
+      "error",
+      {
+        "allowParens": true
+      }
+    ],
+    "no-unreachable": "error",
+    "no-path-concat": "error",
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "no-await-in-loop": "off",
+    "prefer-template": "error",
+    "no-useless-concat": "error",
+    "function-paren-newline": [
+      "error",
+      "consistent"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "ava/assertion-arguments": "error",
+    "ava/max-asserts": [
+      "off",
+      5
+    ],
+    "ava/no-async-fn-without-await": "error",
+    "ava/no-cb-test": "off",
+    "ava/no-duplicate-modifiers": "error",
+    "ava/no-identical-title": "error",
+    "ava/no-ignored-test-files": "error",
+    "ava/no-import-test-files": "error",
+    "ava/no-invalid-end": "error",
+    "ava/no-nested-tests": "error",
+    "ava/no-only-test": "error",
+    "ava/no-skip-assert": "error",
+    "ava/no-skip-test": "error",
+    "ava/no-statement-after-end": "error",
+    "ava/no-todo-implementation": "error",
+    "ava/no-todo-test": "warn",
+    "ava/no-unknown-modifiers": "error",
+    "ava/prefer-async-await": "error",
+    "ava/prefer-power-assert": "off",
+    "ava/test-ended": "error",
+    "ava/test-title": [
+      "error",
+      "if-multiple"
+    ],
+    "ava/use-t-well": "error",
+    "ava/use-t": "error",
+    "ava/use-test": "error",
+    "ava/use-true-false": "error"
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "root": true,
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "mocha": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      }
+    },
+    "react": {
+      "pragma": "React",
+      "version": "16.6"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      // https://www.npmjs.com/package/airbnb-prop-types
+      "exact",
+      // https://www.npmjs.com/package/prop-types-exact
+      "Object.freeze"
+      // https://tc39.github.io/ecma262/#sec-object.freeze
+    ]
+  },
+  "globals": {
+    "mechanic": true,
+    "yarify": true,
+    "L": true
+  },
+  "plugins": [
+    "import",
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "import/no-cycle": "off",
+    "prefer-destructuring": "off",
+    "no-console": "off",
+    "dot-notation": "off",
+    "quote-props": "off",
+    "comma-dangle": "off",
+    "padded-blocks": "off",
+    "no-trailing-spaces": "off",
+    "no-else-return": "off",
+    "max-len": [
+      "warn",
+      200
+    ],
+    "no-template-curly-in-string": "error",
+    "no-loop-func": "error",
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxEOF": 2
+      }
+    ],
+    "semi": "error",
+    "no-var": "error",
+    // disallow unnecessary semicolons
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
+    "curly": "error",
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "handle-callback-err": [
+      "error",
+      "^(err|error|errors)$"
+    ],
+    "eqeqeq": "error",
+    "no-underscore-dangle": "off",
+    "no-multi-spaces": "error",
+    "space-unary-ops": [
+      "error",
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ],
+    "object-curly-spacing": [
+      "warn",
+      "never"
+    ],
+    "object-curly-newline": "off",
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "template-curly-spacing": "off",
+    "guard-for-in": "error",
+    "no-return-assign": "error",
+    "comma-style": [
+      "error",
+      "last"
+    ],
+    "comma-spacing": [
+      1,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never"
+      }
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "no-shadow": [
+      "error",
+      {
+        "allow": [
+          "resolve",
+          "reject",
+          "error",
+          "err"
+        ]
+      }
+    ],
+    "no-unused-vars": "warn",
+    "no-use-before-define": [
+      "error",
+      "nofunc"
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "no-confusing-arrow": [
+      "error",
+      {
+        "allowParens": true
+      }
+    ],
+    "no-unreachable": "error",
+    "no-path-concat": "error",
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "no-await-in-loop": "off",
+    "prefer-template": "error",
+    "no-useless-concat": "error",
+    "function-paren-newline": [
+      "error",
+      "consistent"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    /*
+      Eslint react plugin override
+    */
+    "react/prop-types": [
+      "warn",
+      {
+        "ignore": [
+          "children"
+        ]
+      }
+    ],
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": "off",
+    "react/no-unused-prop-types": "warn",
+    "react/jsx-closing-bracket-location": [
+      "warn",
+      {
+        "selfClosing": "tag-aligned",
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-indent": [
+      "error",
+      4
+    ],
+    "react/jsx-indent-props": [
+      "error",
+      4
+    ],
+    "react/jsx-tag-spacing": [
+      "warn",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "never",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
+    "react/jsx-one-expression-per-line": [
+      "warn",
+      {
+        "allow": "single-child"
+      }
+    ],
+    /*
+      Override jsx-a11y rules
+    */
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    // Disallow multiple spaces between inline JSX props
+    // https://github.com/yannickcr/eslint-plugin-react/blob/ac102885765be5ff37847a871f239c6703e1c7cc/docs/rules/jsx-props-no-multi-spaces.md
+    "react/jsx-props-no-multi-spaces": "error",
+    // Prevent this from being used in stateless functional components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-this-in-sfc.md
+    "react/no-this-in-sfc": "error",
+    // Ensures inline tags are not rendered without spaces between them
+    "react/jsx-child-element-spacing": "off",
+    // Prevent usage of button elements without an explicit type attribute
+    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/button-has-type.md
+    "react/button-has-type": [
+      "error",
+      {
+        "button": true,
+        "submit": true,
+        "reset": false
+      }
+    ],
+    // Prevent using this.state within a this.setState
+    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/no-access-state-in-setstate.md
+    "react/no-access-state-in-setstate": "error",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "never",
+        "children": "never"
+      }
+    ],
+    "react/no-typos": "error",
+    // Prevent unused state values
+    // https://github.com/yannickcr/eslint-plugin-react/pull/1103/
+    "react/no-unused-state": "warn",
+    // Prevent usage of shouldComponentUpdate when extending React.PureComponent
+    // https://github.com/yannickcr/eslint-plugin-react/blob/9e13ae2c51e44872b45cc15bf1ac3a72105bdd0e/docs/rules/no-redundant-should-component-update.md
+    "react/no-redundant-should-component-update": "error",
+    // Require style prop value be an object or var
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/style-prop-object.md
+    "react/style-prop-object": "error",
+    // Prevent invalid characters from appearing in markup
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unescaped-entities.md
+    "react/no-unescaped-entities": "error",
+    // Prevent usage of .bind() in JSX props
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md
+    "react/jsx-no-bind": [
+      "error",
+      {
+        "ignoreRefs": true,
+        "allowArrowFunctions": true,
+        "allowFunctions": false,
+        "allowBind": false,
+        "ignoreDOMComponents": true
+      }
+    ],
+    // Enforce event handler naming conventions in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-handler-names.md
+    //    "react/jsx-handler-names": [
+    //      "warn",
+    //      {
+    //        "eventHandlerPrefix": "handle",
+    //        "eventHandlerPropPrefix": "on"
+    //      }
+    //    ],
+
+    // Prevent duplicate props in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
+    "react/jsx-no-duplicate-props": [
+      "error",
+      {
+        "ignoreCase": true
+      }
+    ],
+    // Enforce PascalCase for user-defined JSX components
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-pascal-case.md
+    "react/jsx-pascal-case": "warn",
+    // Prevent variables used in JSX to be incorrectly marked as unused
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-uses-vars.md
+    "react/jsx-uses-vars": "error",
+    // Prevent usage of dangerous JSX properties
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-danger.md
+    "react/no-danger": "warn",
+    // Prevent usage of deprecated methods
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-deprecated.md
+    "react/no-deprecated": "warn",
+    // Enforce component methods order
+    // https://github.com/yannickcr/eslint-plugin-react/blob/843d71a432baf0f01f598d7cf1eea75ad6896e4b/docs/rules/sort-comp.md
+    "react/sort-comp": [
+      "warn",
+      {
+        "order": [
+          "static-methods",
+          "instance-variables",
+          "lifecycle",
+          "/^.+Async$/",
+          "instance-methods",
+          "everything-else",
+          "rendering"
+        ],
+        "groups": {
+          "lifecycle": [
+            "displayName",
+            "propTypes",
+            "contextTypes",
+            "childContextTypes",
+            "mixins",
+            "statics",
+            "defaultProps",
+            "constructor",
+            "getDefaultProps",
+            "getInitialState",
+            "state",
+            "getChildContext",
+            "componentWillMount",
+            "componentDidMount",
+            "componentWillReceiveProps",
+            "shouldComponentUpdate",
+            "componentWillUpdate",
+            "componentDidUpdate",
+            "componentWillUnmount",
+            "getDerivedStateFromProps",
+            "componentDidCatch"
+          ],
+          "rendering": [
+            "/^render.+$/",
+            "render"
+          ]
+        }
+      }
+    ]
+  }
+}
