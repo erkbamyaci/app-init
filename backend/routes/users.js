@@ -1,4 +1,4 @@
-const controller = require("../controllers/users");
+const controller = require("../controllers/users_controller");
 const validateToken = require("../utils").validateToken;
 
 module.exports = (router) => {
