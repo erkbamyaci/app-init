@@ -1,13 +1,14 @@
 import {Redirect, Route} from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
+import auth from "../services/auth";
 
-export const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
+export const PrivateRoute = ({component: Component, ...rest}) => (
 
     <Route
         {...rest}
         render={(props) => (
-            isAuthenticated ? (
+            auth.loggedIn() ? (
                 <Component {...props}/>
             ) : (
                 <Redirect
@@ -21,12 +22,12 @@ export const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) =
     />
 );
 
-export const LoginRoute = ({component: Component, isAuthenticated, ...rest}) => (
+export const LoginRoute = ({component: Component, ...rest}) => (
 
     <Route
         {...rest}
         render={(props) => (
-            !isAuthenticated ? (
+            !auth.loggedIn() ? (
                 <Component {...props}/>
             ) : (
                 <Redirect

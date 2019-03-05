@@ -1,6 +1,7 @@
 import React from "react";
 import {MyContext} from "../../context/Context";
 import auth from "../../services/auth";
+import history from "../../history";
 
 export default class Login extends React.Component {
     static contextType = MyContext;
@@ -20,6 +21,8 @@ export default class Login extends React.Component {
 
         const data = await auth.login(email, password);
         console.log(data);
+
+        auth.loggedIn() && history.push("/");
     };
 
     render() {
