@@ -22,11 +22,6 @@ export default class Login extends React.Component {
         console.log(data);
     };
 
-    logout = async () => {
-        await auth.logout();
-        console.log("logged out");
-    };
-
     render() {
         const {email, password} = this.state;
 
@@ -44,9 +39,6 @@ export default class Login extends React.Component {
                 />
                 <button type="button" onClick={this.login}>
                     Login
-                </button>
-                <button type="button" onClick={this.logout}>
-                    Logout
                 </button>
             </div>
         );

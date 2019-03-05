@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const MODEL_PATH = "../models/";
 const User = require(`${MODEL_PATH}users`);
 const bycrpt = require("bcrypt");
@@ -40,9 +39,10 @@ module.exports = {
 
     add: async (req, res) => {
 
+        const db = req.db;
+
         try {
 
-            await mongoose.connect(connUri, {useNewUrlParser: true});
             let result = {};
             let status = 201;
 
@@ -62,15 +62,20 @@ module.exports = {
                 result.status = status;
                 result.error = err;
             }
+
             res.status(status).send(result);
+            db.close();
 
         }
         catch (err) {
 
             let result = {};
-            result.status = 500;
+            const status = 500;
+            result.status = status;
             result.error = err;
-            res.status(500).send(result);
+
+            res.status(status).send(result);
+            db.close();
         }
     },
 
@@ -111,7 +116,8 @@ module.exports = {
 
         try {
 
-            await mongoose.connect(connUri, {useNewUrlParser: true});
+            // await mongoose.connect(connUri, {useNewUrlParser: true});
+            const db = req.db;
             let result = {};
             let status = 200;
 
@@ -131,10 +137,8 @@ module.exports = {
                         const payload = {user: user.email};
                         const options = {expiresIn: "2d", issuer: "barfly"};
                         const secret = process.env.JWT_SECRET;
-                        const token = jwt.sign(payload, secret, options);
 
-                        console.log("TOKEN", token);
-                        result.token = token;
+                        result.token = jwt.sign(payload, secret, options);
                         result.status = status;
                         result.result = user;
 
@@ -147,12 +151,15 @@ module.exports = {
                     }
 
                     res.status(status).send(result);
+
+                    db.close();
                 }
                 catch (err) {
 
                     status = 500;
                     result.status = status;
                     result.error = err;
+
                     res.status(status).send(result);
                 }
             }
@@ -210,9 +217,10 @@ module.exports = {
 
     getAll: async (req, res) => {
 
+        const db = req.db;
+
         try {
 
-            await mongoose.connect(connUri, {useNewUrlParser: true});
             let result = {};
             let status = 200;
 
@@ -235,21 +243,27 @@ module.exports = {
                 }
 
                 res.status(status).send(result);
+                db.close();
             }
             else {
 
                 status = 401;
                 result.status = status;
                 result.error = "Authentication error";
+
                 res.status(status).send(result);
+                db.close();
             }
         }
         catch (err) {
 
             let result = {};
-            result.status = 500;
+            const status = 500;
+            result.status = status;
             result.error = err;
-            res.status(500).send(result);
+
+            res.status(status).send(result);
+            db.close();
         }
     }
 };

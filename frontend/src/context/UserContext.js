@@ -3,7 +3,6 @@ import {MyContext} from "./Context";
 
 export class UserProvider extends React.Component {
     state = {
-        user: "erk"
     };
 
     render() {

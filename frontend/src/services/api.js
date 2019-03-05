@@ -2,10 +2,6 @@ import Axios from "axios";
 import {serverUrl} from "./constants";
 import auth from "./auth";
 
-const getToken = async () => {
-    // const jwt = await storage
-};
-
 const apiCall = async ({
     url = "",
     payload,

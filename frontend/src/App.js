@@ -1,29 +1,11 @@
 import React from "react";
-import {Router, Route, Switch, Redirect} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import {UserProvider} from "./context/UserContext";
 import Login from "./routes/login/Login";
 import Home from "./routes/home/Home";
 import auth from "./services/auth";
 import history from "./history";
-
-const PrivateRoute = ({component: Component, isAuthenticated, ...rest}) => (
-
-    <Route
-        {...rest}
-        render={(props) => (
-            isAuthenticated ? (
-                <Component {...props}/>
-            ) : (
-                <Redirect
-                    to={{
-                        pathname: "login",
-                        state: {from: props.location}
-                    }}
-                />
-            )
-        )}
-    />
-);
+import {PrivateRoute, LoginRoute} from "./components/Routes";
 
 class App extends React.Component {
 
@@ -34,7 +16,7 @@ class App extends React.Component {
                 <Router history={history}>
                     <Switch>
                         <PrivateRoute exact isAuthenticated={auth.loggedIn()} path="/" component={Home}/>
-                        <Route exact path="/login" component={Login}/>
+                        <LoginRoute exact isAuthenticated={auth.loggedIn()} path="/login" component={Login}/>
                     </Switch>
                 </Router>
             </UserProvider>

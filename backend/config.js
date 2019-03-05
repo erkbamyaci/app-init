@@ -1,6 +1,6 @@
 module.exports = {
-  development: {
-    port: process.env.PORT || 7000,
-    saltingRounds: 10
-  }
-}
+    development: {
+        port: process.env.PORT || 7000,
+        saltingRounds: 10
+    }
+};

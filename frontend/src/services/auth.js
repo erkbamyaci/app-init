@@ -2,11 +2,12 @@ import apiCall from "./api";
 import storage from "./storage";
 import jwt from "jsonwebtoken";
 import {JWT_SECRET} from "./constants";
+import {serverUrl} from "./constants";
 
 class Auth {
 
     constructor() {
-        this.domain = "http://localhost:7000";
+        this.domain = serverUrl;
     }
 
     login = async (email, password) => {
@@ -19,7 +20,8 @@ class Auth {
                     email,
                     password
                 },
-                method: "POST"
+                method: "POST",
+                withAuth: false
             });
 
             this.setToken(data.token);
@@ -80,7 +82,7 @@ class Auth {
     };
 
     _chechStatus = (response) => {
-        // raises an erro in case response status is not a success
+        // raises an error in case response status is not a success
         if (response.status >= 200 && response.status < 300) {
             return response;
         }
